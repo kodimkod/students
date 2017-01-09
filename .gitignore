@@ -1,0 +1,7 @@
+/composer.phar
+/vendor/*
+/composer.lock
+/tests/coverage
+/tests/codereport.html
+/tests/*.xml
+/nbproject/private/

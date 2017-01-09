@@ -1,0 +1,24 @@
+{
+	"name": "testprojects/Students",
+	"description": "Students",
+	"authors": [
+		{
+			"name": "kodimkod"
+		}
+	],
+	"repositories": [
+		
+	],
+	"require": {
+		
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.7.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Students\\": ["src/"]
+		}
+	}
+}
+
