@@ -10,21 +10,32 @@ class Router
      */
     private $routeMap;
 
-    public function __construct(array $routeMap)
+    /**
+     * @var string
+     */
+    private $path;
+    
+    /**
+     * @param array $routeMap
+     * @param string $requestUri
+     */
+    public function __construct(array $routeMap, string $requestUri)
     {
+        $this->path =  trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
         $this->routeMap = $routeMap;
     }
 
     /**
-     * @param string $path
+     * @return \Students\Controller
+     * @throws \UnexpectedValueException
      */
-    public function route(string $path): Controller
+    public function route(): Controller
     {
-        if (isset($this->routeMap[$path])) {
-            $className = __NAMESPACE__ . '\\' .  $this->routeMap[$path];
-            return new  $className;
+        if (isset($this->routeMap[$this->path])) {
+            $className = __NAMESPACE__ . '\\' . $this->routeMap[$this->path];
+            return new $className;
         }
-        throw new \UnexpectedValueException('No route found for page' . $path);
+        throw new \UnexpectedValueException('No route found for page ' . $this->path);
     }
 
 }

@@ -1,16 +1,24 @@
 <?php
+
 use Students\{
     Router,
     IndexController,
     Config
 };
-$AUTOLOADER_PATH = __DIR__ .  '/../vendor/autoload.php';
-define('AUTOLOADER_PATH', $AUTOLOADER_PATH);
-require AUTOLOADER_PATH;
+use DI\ContainerBuilder;
+
+$autoloaderPath = __DIR__ . '/../vendor/autoload.php';
+require $autoloaderPath;
 $config = new Config();
-$builder = new DI\ContainerBuilder();
+$builder = new ContainerBuilder();
 $builder->addDefinitions($config->getDependencies());
 $container = $builder->build();
-$router = $container->get('Router');
-$controller = $router->route('');
-echo $controller->process();
+  $router = $container->get('Router');
+try {
+    $controller = $router->route();
+} catch (\Exception $exception) {
+    echo 'Error: ' . $exception->getMessage();
+}
+if (!isset($exception)) {
+    echo $controller->process();
+}

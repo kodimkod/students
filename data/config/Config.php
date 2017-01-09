@@ -10,12 +10,20 @@ class Config
      */
     private $dependenciesMap;
 
+    /**
+     * @var array
+     */
+    private $routesMap = [
+        '' => 'IndexController',
+        'about' => 'AboutController'
+    ];
+
     public function __construct()
     {
         $this->dependenciesMap = [
-            'Router' => new Router(
-                    ['' => 'IndexController']
-            )
+            'Router' => function () {
+                return new Router($this->routesMap, $_SERVER['REQUEST_URI']);
+            }
         ];
     }
 
