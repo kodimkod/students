@@ -17,7 +17,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Students\\": ["src/"]
+			"Students\\": ["src/", "data/config"]
 		}
 	}
 }
