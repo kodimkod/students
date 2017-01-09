@@ -10,12 +10,9 @@ class Router
      */
     private $routeMap;
 
-    public function __construct()
+    public function __construct(array $routeMap)
     {
-        $this->routeMap = [
-            '' => 'IndexController',
-            'about' => 'AboutController'
-        ];
+        $this->routeMap = $routeMap;
     }
 
     /**

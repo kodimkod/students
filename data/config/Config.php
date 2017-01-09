@@ -5,6 +5,9 @@ namespace Students;
 class Config
 {
 
+    /**
+     * @var array
+     */
     private $dependenciesMap;
 
     public function __construct()
