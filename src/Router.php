@@ -21,7 +21,7 @@ class Router
      */
     public function __construct(array $routeMap, string $requestUri)
     {
-        $this->path =  trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $this->path =  trim(parse_url($requestUri, PHP_URL_PATH), '/');
         $this->routeMap = $routeMap;
     }
 

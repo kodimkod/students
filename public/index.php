@@ -13,7 +13,7 @@ $config = new Config();
 $builder = new ContainerBuilder();
 $builder->addDefinitions($config->getDependencies());
 $container = $builder->build();
-  $router = $container->get('Router');
+$router = $container->get('Router');
 try {
     $controller = $router->route();
 } catch (\Exception $exception) {

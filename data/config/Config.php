@@ -20,11 +20,7 @@ class Config
 
     public function __construct()
     {
-        $this->dependenciesMap = [
-            'Router' => function () {
-                return new Router($this->routesMap, $_SERVER['REQUEST_URI']);
-            }
-        ];
+        $this->dependenciesMap = $this->createDependenciesMap();
     }
 
     /**
@@ -33,6 +29,21 @@ class Config
     public function getDependencies(): array
     {
         return $this->dependenciesMap;
+    }
+
+    /**
+     * @return array
+     */
+    private function createDependenciesMap(): array
+    {
+        return [
+            'Router' => function () {
+                return new Router($this->routesMap, $_SERVER['REQUEST_URI']);
+            },
+            'IndexController' => function() {
+                return new IndexController($this->routesMap, $_SERVER['REQUEST_URI']);
+            }
+        ];
     }
 
 }
