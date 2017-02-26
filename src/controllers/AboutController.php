@@ -2,7 +2,7 @@
 
 namespace Students;
 
-class IndexController extends Controller
+class AboutController extends Controller
 {
 
     /**
@@ -10,7 +10,7 @@ class IndexController extends Controller
      */
     public function process(): string
     {
-        $this->view->text = 'Index page';
+        $this->view->text = 'About page';
         return $this->view->render();
     }
 

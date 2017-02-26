@@ -6,7 +6,6 @@ use Students\{
     Config
 };
 use DI\ContainerBuilder;
-
 $autoloaderPath = __DIR__ . '/../vendor/autoload.php';
 require $autoloaderPath;
 $config = new Config();
